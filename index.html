@@ -1,0 +1,756 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Antioch Church Durham is a new church plant in Durham, NC, gathering around Jesus, discipleship, community, and mission." />
+  <title>Antioch Church Durham</title>
+
+  <style>
+    /*
+      Antioch Church Durham Landing Page
+      ------------------------------------------------------------
+      Recommended image filenames for your Cloudflare Pages project:
+
+      /assets/hero-durham.jpg              -> IMG_2498
+      /assets/gathering-room.jpg           -> church gathering room photo
+      /assets/jesus-loves-durham.jpg       -> Jesus Loves Durham group photo
+      /assets/jesus-loves-durham-wide.jpg  -> wide contact/banner image, optional
+
+      To deploy on Cloudflare Pages:
+      1. Put this file at the root of your project as index.html
+      2. Put your images in an /assets folder with the filenames above
+      3. Upload via Cloudflare Pages Direct Upload or connect a GitHub repo
+    */
+
+    :root {
+      /* Palette inspired by IMG_2498: Durham skyline, warm clouds, blue sky, brick, greenery */
+      --ink: #17212b;
+      --muted: #64707a;
+      --soft: #f6f2ea;
+      --paper: #fffaf2;
+      --mist: #e8eef1;
+      --sky: #6db7c9;
+      --deep-sky: #2d6678;
+      --gold: #d99a3d;
+      --coral: #d9826b;
+      --brick: #9d4f36;
+      --green: #577557;
+      --white: #ffffff;
+      --shadow: 0 24px 80px rgba(23, 33, 43, 0.16);
+      --radius: 24px;
+      --max: 1120px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--soft);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.6;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: -999px;
+      top: 16px;
+      background: var(--ink);
+      color: var(--white);
+      padding: 10px 14px;
+      border-radius: 999px;
+      z-index: 10;
+    }
+
+    .skip-link:focus {
+      left: 16px;
+    }
+
+    .site-header {
+      position: fixed;
+      z-index: 20;
+      top: 0;
+      left: 0;
+      right: 0;
+      padding: 18px clamp(18px, 4vw, 56px);
+      background: linear-gradient(to bottom, rgba(255, 250, 242, 0.88), rgba(255, 250, 242, 0.58), rgba(255, 250, 242, 0));
+      backdrop-filter: blur(6px);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      text-decoration: none;
+    }
+
+    .brand-mark {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      color: var(--white);
+      background: var(--ink);
+      font-size: 18px;
+      font-weight: 900;
+      line-height: 1;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      font-size: 0.94rem;
+      font-weight: 700;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: rgba(23, 33, 43, 0.76);
+    }
+
+    .button,
+    .button-secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      border: 0;
+      border-radius: 999px;
+      padding: 13px 20px;
+      min-height: 48px;
+      text-decoration: none;
+      font-weight: 800;
+      line-height: 1;
+      transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease;
+    }
+
+    .button {
+      color: var(--white);
+      background: var(--brick);
+      box-shadow: 0 12px 30px rgba(157, 79, 54, 0.28);
+    }
+
+    .button-secondary {
+      color: var(--ink);
+      background: rgba(255, 255, 255, 0.72);
+      border: 1px solid rgba(23, 33, 43, 0.12);
+    }
+
+    .button:hover,
+    .button-secondary:hover {
+      transform: translateY(-2px);
+    }
+
+    .hero {
+      min-height: 92vh;
+      position: relative;
+      isolation: isolate;
+      display: grid;
+      align-items: end;
+      padding: 130px clamp(18px, 5vw, 72px) 56px;
+      color: var(--white);
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+      background: url("assets/hero-durham.jpg") center / cover no-repeat;
+      transform: scale(1.02);
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background:
+        linear-gradient(90deg, rgba(23, 33, 43, 0.78), rgba(23, 33, 43, 0.36) 52%, rgba(23, 33, 43, 0.26)),
+        linear-gradient(to top, rgba(23, 33, 43, 0.72), rgba(23, 33, 43, 0.08) 58%);
+    }
+
+    .hero-inner {
+      width: min(100%, var(--max));
+      margin: 0 auto;
+      display: grid;
+      gap: 28px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      width: fit-content;
+      align-items: center;
+      gap: 9px;
+      border-radius: 999px;
+      padding: 8px 12px;
+      background: rgba(255, 255, 255, 0.16);
+      border: 1px solid rgba(255, 255, 255, 0.24);
+      backdrop-filter: blur(8px);
+      font-weight: 800;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      font-size: 0.78rem;
+    }
+
+    .hero h1 {
+      max-width: 880px;
+      margin: 0;
+      font-size: clamp(3rem, 9vw, 7.25rem);
+      line-height: 0.92;
+      letter-spacing: -0.08em;
+    }
+
+    .hero p {
+      max-width: 680px;
+      margin: 0;
+      font-size: clamp(1.08rem, 2.2vw, 1.45rem);
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .quick-info {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-top: 12px;
+    }
+
+    .quick-card {
+      padding: 18px;
+      border-radius: 18px;
+      background: rgba(255, 250, 242, 0.88);
+      color: var(--ink);
+      box-shadow: 0 16px 45px rgba(0, 0, 0, 0.18);
+      backdrop-filter: blur(10px);
+    }
+
+    .quick-card span {
+      display: block;
+      color: var(--brick);
+      font-size: 0.78rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 3px;
+    }
+
+    .quick-card strong {
+      display: block;
+      font-size: 1.05rem;
+      line-height: 1.25;
+    }
+
+    section {
+      padding: clamp(58px, 8vw, 104px) clamp(18px, 5vw, 72px);
+    }
+
+    .section-inner {
+      width: min(100%, var(--max));
+      margin: 0 auto;
+    }
+
+    .section-kicker {
+      color: var(--brick);
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-size: 0.78rem;
+      margin: 0 0 10px;
+    }
+
+    h2 {
+      margin: 0 0 18px;
+      font-size: clamp(2rem, 5vw, 4.2rem);
+      line-height: 0.98;
+      letter-spacing: -0.06em;
+    }
+
+    .lead {
+      margin: 0;
+      max-width: 820px;
+      font-size: clamp(1.05rem, 2vw, 1.28rem);
+      color: var(--muted);
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+      gap: clamp(28px, 5vw, 64px);
+      align-items: center;
+    }
+
+    .panel {
+      background: var(--paper);
+      border: 1px solid rgba(23, 33, 43, 0.08);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .content-card {
+      padding: clamp(26px, 4vw, 44px);
+    }
+
+    .location {
+      background: linear-gradient(135deg, var(--paper), #edf4f5);
+    }
+
+    .location-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-top: 34px;
+    }
+
+    .info-box {
+      min-height: 180px;
+      padding: 24px;
+      border-radius: 22px;
+      background: var(--white);
+      border: 1px solid rgba(23, 33, 43, 0.08);
+      box-shadow: 0 16px 42px rgba(23, 33, 43, 0.08);
+    }
+
+    .info-box h3 {
+      margin: 0 0 10px;
+      font-size: 1.1rem;
+      letter-spacing: -0.02em;
+    }
+
+    .info-box p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .info-box strong {
+      color: var(--ink);
+    }
+
+    .image-card {
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      min-height: 440px;
+      background: var(--mist);
+    }
+
+    .image-card img {
+      width: 100%;
+      height: 100%;
+      min-height: 440px;
+      object-fit: cover;
+    }
+
+    .who {
+      background: var(--soft);
+    }
+
+    .who .content-card {
+      background: var(--paper);
+      border-radius: var(--radius);
+      border-left: 9px solid var(--gold);
+    }
+
+    .quote {
+      margin-top: 28px;
+      padding: 22px;
+      border-radius: 18px;
+      background: rgba(109, 183, 201, 0.18);
+      color: var(--deep-sky);
+      font-weight: 900;
+      font-size: 1.18rem;
+      line-height: 1.35;
+    }
+
+    .circles {
+      background: #edf2f3;
+    }
+
+    .circle-row {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 14px;
+      margin: 34px 0 30px;
+    }
+
+    .circle {
+      aspect-ratio: 1;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      padding: 18px;
+      color: var(--white);
+      box-shadow: 0 18px 48px rgba(23, 33, 43, 0.12);
+    }
+
+    .circle:nth-child(1) { background: #9fbfca; }
+    .circle:nth-child(2) { background: #7faee7; }
+    .circle:nth-child(3) { background: #a6ad75; }
+    .circle:nth-child(4) { background: #142847; }
+    .circle:nth-child(5) { background: #426f70; }
+
+    .circle small {
+      display: block;
+      font-weight: 800;
+      opacity: 0.9;
+      margin-bottom: 6px;
+    }
+
+    .circle strong {
+      display: block;
+      font-size: clamp(0.95rem, 1.7vw, 1.28rem);
+      line-height: 1.05;
+    }
+
+    .jesus-durham {
+      background: var(--paper);
+    }
+
+    .wide-photo {
+      overflow: hidden;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      margin-bottom: 28px;
+      max-height: 540px;
+    }
+
+    .wide-photo img {
+      width: 100%;
+      max-height: 540px;
+      object-fit: cover;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .contact-box {
+      background: #7f878a;
+      color: var(--white);
+      border-radius: 22px;
+      padding: 28px;
+      min-height: 190px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .contact-box:nth-child(2) {
+      background: var(--deep-sky);
+    }
+
+    .contact-box:nth-child(3) {
+      background: var(--brick);
+    }
+
+    .contact-box h3 {
+      margin: 0 0 8px;
+      font-size: 1.35rem;
+      letter-spacing: -0.03em;
+    }
+
+    .contact-box p {
+      margin: 0;
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    .contact-box a {
+      color: var(--white);
+      font-weight: 800;
+    }
+
+    .site-footer {
+      padding: 28px clamp(18px, 5vw, 72px) 42px;
+      background: var(--ink);
+      color: rgba(255, 255, 255, 0.78);
+    }
+
+    .footer-inner {
+      width: min(100%, var(--max));
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .footer-inner strong {
+      color: var(--white);
+    }
+
+    @media (max-width: 920px) {
+      .nav-links a:not(.button) {
+        display: none;
+      }
+
+      .quick-info,
+      .location-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .split {
+        grid-template-columns: 1fr;
+      }
+
+      .circle-row {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .circle {
+        aspect-ratio: auto;
+        min-height: 160px;
+        border-radius: 24px;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .site-header {
+        padding: 14px 16px;
+      }
+
+      .brand span:last-child {
+        max-width: 170px;
+        line-height: 1.08;
+      }
+
+      .hero {
+        min-height: 94vh;
+        padding-top: 112px;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+      }
+
+      .button,
+      .button-secondary {
+        width: 100%;
+      }
+
+      .circle-row {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header" aria-label="Site header">
+    <nav class="nav" aria-label="Main navigation">
+      <a class="brand" href="#top" aria-label="Antioch Church Durham home">
+        <span class="brand-mark">A</span>
+        <span>Antioch Church Durham</span>
+      </a>
+
+      <div class="nav-links">
+        <a href="#location">Location</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+        <a class="button" href="https://subsplash.com/u/-Z92ZR6/give?fund_id=8916e679-e51f-4c62-89b6-7a7f921a6b04&frequency=once" target="_blank" rel="noopener noreferrer">Give</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section id="top" class="hero" aria-label="Antioch Church Durham introduction">
+      <div class="hero-inner">
+        <div class="eyebrow">Established September 2025</div>
+        <h1>Antioch Church Durham</h1>
+        <p>
+          A new church in Durham seeking to love Jesus, make disciples, build family, and live on mission in our city.
+        </p>
+
+        <div class="hero-actions">
+          <a class="button" href="https://subsplash.com/u/-Z92ZR6/give?fund_id=8916e679-e51f-4c62-89b6-7a7f921a6b04&frequency=once" target="_blank" rel="noopener noreferrer">Give to Antioch Church Durham</a>
+          <a class="button-secondary" href="#location">Join us Sunday</a>
+        </div>
+
+        <div class="quick-info" aria-label="Quick church information">
+          <div class="quick-card">
+            <span>Gatherings</span>
+            <strong>Sundays, 2:30–3:30 pm</strong>
+          </div>
+          <div class="quick-card">
+            <span>Location</span>
+            <strong>922 Ninth St., Durham, NC</strong>
+          </div>
+          <div class="quick-card">
+            <span>Contact</span>
+            <strong>antiochchurchdurham@gmail.com</strong>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="location" class="location">
+      <div class="section-inner">
+        <p class="section-kicker">Location info</p>
+        <h2>Join us for Sunday gatherings.</h2>
+        <p class="lead">
+          We gather in Durham to worship, pray, hear Scripture, and build community around Jesus.
+        </p>
+
+        <div class="location-grid">
+          <article class="info-box">
+            <h3>When</h3>
+            <p><strong>Sundays</strong><br />2:30–3:30 pm</p>
+          </article>
+          <article class="info-box">
+            <h3>Where</h3>
+            <p><strong>922 Ninth St.</strong><br />Durham, NC</p>
+          </article>
+          <article class="info-box">
+            <h3>Questions?</h3>
+            <p>Email <a href="mailto:antiochchurchdurham@gmail.com"><strong>antiochchurchdurham@gmail.com</strong></a></p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="who">
+      <div class="section-inner split">
+        <div class="image-card" aria-label="Antioch Church Durham gathering photo">
+          <img src="assets/gathering-room.jpg" alt="A Sunday gathering for Antioch Church Durham in a bright room with people seated near a speaker." />
+        </div>
+
+        <div class="content-card">
+          <p class="section-kicker">Who we are</p>
+          <h2>Who is Antioch Church Durham?</h2>
+          <p class="lead">
+            Antioch Church Durham is part of a global family of churches that are Spirit-led, biblically based, and committed to the person of Jesus, His rule and reign, and His values lived out in community.
+          </p>
+          <p class="lead" style="margin-top: 18px;">
+            We want to see transformation in personal lives, families, neighborhoods, and every sphere of society in Durham and beyond for the glory of God.
+          </p>
+          <div class="quote">
+            We are a people who are passionate about Jesus and His purposes in the earth.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="circles" aria-label="Five Circles of Healthy Church">
+      <div class="section-inner">
+        <p class="section-kicker">How we do church</p>
+        <h2>Five Circles of Healthy Church</h2>
+        <p class="lead">
+          We want our relationship with Jesus to affect and transform every area of our lives. These five circles help us grow in a holistic way as disciples who love God, love one another, and live on mission.
+        </p>
+
+        <div class="circle-row" aria-label="Five circles">
+          <div class="circle">
+            <div>
+              <small>Psalm 27:4, 8</small>
+              <strong>Personal Devotional Life</strong>
+            </div>
+          </div>
+          <div class="circle">
+            <div>
+              <small>Matthew 28:18–20</small>
+              <strong>Life on Life Discipleship</strong>
+            </div>
+          </div>
+          <div class="circle">
+            <div>
+              <small>Acts 2:42–47</small>
+              <strong>House to House</strong>
+            </div>
+          </div>
+          <div class="circle">
+            <div>
+              <small>Acts 2:46–47</small>
+              <strong>Church Gathered</strong>
+            </div>
+          </div>
+          <div class="circle">
+            <div>
+              <small>Acts 1:8</small>
+              <strong>Witness in the World</strong>
+            </div>
+          </div>
+        </div>
+
+        <p class="lead">
+          Instead of focusing on only one circle, we hope to grow by embracing all five: deep devotional life, discipleship, community, corporate gatherings, and mission where God has planted us.
+        </p>
+      </div>
+    </section>
+
+    <section id="contact" class="jesus-durham">
+      <div class="section-inner">
+        <div class="wide-photo">
+          <img src="assets/jesus-loves-durham.jpg" alt="A group from Antioch Church Durham sitting in front of a sign that says Jesus loves Durham." />
+        </div>
+
+        <p class="section-kicker">Jesus loves Durham</p>
+        <h2>Get connected.</h2>
+
+        <div class="contact-grid">
+          <article class="contact-box">
+            <h3>Gather with us</h3>
+            <p>Sundays from 2:30–3:30 pm<br />922 Ninth St., Durham, NC</p>
+          </article>
+          <article class="contact-box">
+            <h3>Contact us</h3>
+            <p><a href="mailto:antiochchurchdurham@gmail.com">antiochchurchdurham@gmail.com</a></p>
+          </article>
+          <article class="contact-box">
+            <h3>Partner through giving</h3>
+            <p><a href="https://subsplash.com/u/-Z92ZR6/give?fund_id=8916e679-e51f-4c62-89b6-7a7f921a6b04&frequency=once" target="_blank" rel="noopener noreferrer">Give online</a></p>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div><strong>Antioch Church Durham</strong> © 2026</div>
+      <div><a href="mailto:antiochchurchdurham@gmail.com">antiochchurchdurham@gmail.com</a></div>
+    </div>
+  </footer>
+</body>
+</html>
