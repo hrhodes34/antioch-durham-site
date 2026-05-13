@@ -13,7 +13,7 @@
       Recommended image filenames for your Cloudflare Pages project:
 
       /assets/hero-durham.jpg              -> IMG_2498
-      /assets/gathering-room.jpg           -> church gathering room photo
+      /assets/gathering-room.JPEG          -> church gathering room photo
       /assets/jesus-loves-durham.jpg       -> Jesus Loves Durham group photo
       /assets/jesus-loves-durham-wide.jpg  -> wide contact/banner image, optional
 
@@ -122,6 +122,18 @@
       font-size: 18px;
       font-weight: 900;
       line-height: 1;
+      overflow: hidden;
+    }
+
+    .brand-logo {
+      background: transparent;
+      border-radius: 0;
+    }
+
+    .brand-logo img {
+      width: 34px;
+      height: 34px;
+      object-fit: contain;
     }
 
     .nav-links {
@@ -581,7 +593,7 @@
   <header class="site-header" aria-label="Site header">
     <nav class="nav" aria-label="Main navigation">
       <a class="brand" href="#top" aria-label="Antioch Church Durham home">
-        <span class="brand-mark">A</span>
+        <span class="brand-mark brand-logo"><img src="assets/acc-logo.png" alt="" /></span>
         <span>Antioch Church Durham</span>
       </a>
 
@@ -597,10 +609,9 @@
   <main id="main">
     <section id="top" class="hero" aria-label="Antioch Church Durham introduction">
       <div class="hero-inner">
-        <div class="eyebrow">Established September 2025</div>
         <h1>Antioch Church Durham</h1>
         <p>
-          A new church in Durham seeking to love Jesus, make disciples, build family, and live on mission in our city.
+          We are a people with a passion for Jesus and His purposes in the earth.
         </p>
 
         <div class="hero-actions">
@@ -630,7 +641,7 @@
         <p class="section-kicker">Location info</p>
         <h2>Join us for Sunday gatherings.</h2>
         <p class="lead">
-          We gather in Durham to worship, pray, hear Scripture, and build community around Jesus.
+          We gather in Durham to worship, pray, learn Scripture, and build community around Jesus.
         </p>
 
         <div class="location-grid">
@@ -653,20 +664,21 @@
     <section id="about" class="who">
       <div class="section-inner split">
         <div class="image-card" aria-label="Antioch Church Durham gathering photo">
-          <img src="assets/gathering-room.jpg" alt="A Sunday gathering for Antioch Church Durham in a bright room with people seated near a speaker." />
+          <img src="assets/gathering-room.JPEG" alt="A Sunday gathering for Antioch Church Durham in a bright room with people seated near a speaker." />
         </div>
 
         <div class="content-card">
           <p class="section-kicker">Who we are</p>
           <h2>Who is Antioch Church Durham?</h2>
           <p class="lead">
-            Antioch Church Durham is part of a global family of churches that are Spirit-led, biblically based, and committed to the person of Jesus, His rule and reign, and His values lived out in community.
+            Antioch is a global family of churches that are Spirit-led, biblically based, and embracing every nation, tribe, people and language. We are committed to the person of Jesus, His rule and reign in all aspects of our lives and living out His values in community. God has called us to be a multiplying church planting movement through whom He brings transformation to personal lives, families, neighborhoods, and every sphere of society in our city, nation, and nations for the glory of God.
           </p>
           <p class="lead" style="margin-top: 18px;">
-            We want to see transformation in personal lives, families, neighborhoods, and every sphere of society in Durham and beyond for the glory of God.
+            Learn more about the Antioch movement here:<br />
+            <a href="https://antioch.org/about" target="_blank" rel="noopener noreferrer"><strong>antioch.org/about</strong></a>
           </p>
           <div class="quote">
-            We are a people who are passionate about Jesus and His purposes in the earth.
+            We are a people with a passion for Jesus and His purposes in the earth.
           </div>
         </div>
       </div>
@@ -725,7 +737,6 @@
           <img src="assets/jesus-loves-durham.jpg" alt="A group from Antioch Church Durham sitting in front of a sign that says Jesus loves Durham." />
         </div>
 
-        <p class="section-kicker">Jesus loves Durham</p>
         <h2>Get connected.</h2>
 
         <div class="contact-grid">
